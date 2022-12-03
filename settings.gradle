@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "TP5"
+rootProject.name = "TP4_android"
 include ':app'

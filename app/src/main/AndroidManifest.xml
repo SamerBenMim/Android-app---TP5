@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.tp4_android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,15 +13,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TP5"
+        android:theme="@style/Theme.TP4_android"
         tools:targetApi="31">
         <activity
+            android:name=".WeatherForecast"
+            android:exported="false" />
+        <activity
             android:name=".SpinnerActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,10 +29,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
     </application>
 

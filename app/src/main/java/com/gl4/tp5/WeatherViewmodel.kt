@@ -9,17 +9,22 @@ import androidx.lifecycle.ViewModel
         import retrofit2.Callback
         import retrofit2.Response
 
-class WeatherViewModel: ViewModel() {
+class WeatherViewModel(city : String ): ViewModel() {
 
         private val weatherMutable = MutableLiveData<WeatherResponse>();
         val weather : LiveData<WeatherResponse> = weatherMutable;
+//        var city : String  = "tunis"
         init {
-                getAllWeathers();
+                getAllWeathers(city);
         }
 
-        private fun getAllWeathers() {
+        public fun search (city:String) {
+                getAllWeathers(city);
+        }
 
-                RetrofitHelper.retrofitService.getWeather().enqueue(object: Callback<WeatherResponse>{
+        private fun getAllWeathers(city: String) {
+                 Log.d("city",city)
+                RetrofitHelper.retrofitService.getWeather(city).enqueue(object: Callback<WeatherResponse>{
                         override fun onResponse(
                                 call: Call<WeatherResponse>,
                                 response: Response<WeatherResponse>

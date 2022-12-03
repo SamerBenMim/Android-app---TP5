@@ -3,6 +3,8 @@ package com.gl4.tp5
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
@@ -17,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var humidity : TextView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val  WeatherView = WeatherViewModel()
+        val  WeatherView = WeatherViewModel("Paris")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         classSpinner = findViewById(R.id.spinner)
@@ -37,15 +39,31 @@ class MainActivity : AppCompatActivity() {
 
         WeatherView.weather.observe(this, Observer { e : WeatherResponse ->
             if(e != null){
-                Log.d("sddddddddddddddddsss",e.toString())
+                Log.d("testtttttttttt",e.toString())
                 weather.text =  e.weather[0].description.toString() ;
                 presser.text =  "pressure :" + e.main.pressure.toString() ;
 
                 temp.text =     e.main.temp.toString()+" °C";
                 humidity.text = "hum :" +  e.main.humidity.toString();
-
             }
 
         } )
+
+        classSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var  country = "" ;
+                if(position == 0) country = "tunis";
+                if(position == 1) country = "Paris";
+                if(position == 2) country = "Munich";
+                WeatherView.search(country)
+
+            }
+
+
+        }
     }
 }
