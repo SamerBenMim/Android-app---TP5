@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TP5</string>
+
+    <string-array name="weather_array">
+        <item>Tunis</item>
+        <item>France</item>
+        <item>Germany</item>
+    </string-array>
+</resources>
